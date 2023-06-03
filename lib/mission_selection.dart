@@ -13,65 +13,96 @@ import 'package:google_fonts/google_fonts.dart';
 class MissionSelectionScreen extends StatefulWidget {
   String missionSelected;
 
- MissionSelectionScreen(this.missionSelected);
+  MissionSelectionScreen(this.missionSelected);
 
   @override
-  State<MissionSelectionScreen> createState() => _MissionSelectionScreenState();
+  State<MissionSelectionScreen> createState() =>
+      _MissionSelectionScreenState();
 }
 
 class _MissionSelectionScreenState extends State<MissionSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Stack(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 30),
-                child: IconButton(onPressed: () {
-
-                }, icon: FaIcon(FontAwesomeIcons.arrowLeft)),
-              )
-            ],
-          ),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 14),
+            padding: const EdgeInsets.only(top: 30, left: 10),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: IconButton(
+                onPressed: () {
+                  // Add functionality for back button
+                },
+                icon: FaIcon(FontAwesomeIcons.arrowLeft),
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
             child: Text(
               "Select Mission",
-              style: GoogleFonts.adventPro(fontSize: 30),
+              style: GoogleFonts.adventPro(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 20),
-            child: Text(
-              "Each mission has increased level of difficulty!!",
-              style: GoogleFonts.adventPro(fontSize: 26, fontWeight: FontWeight.bold),
+          SizedBox(height: 20),
+          Text(
+            "Each mission has increased level of difficulty!!",
+            style: GoogleFonts.adventPro(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 30,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => SecAnalystMission1()));
-                },
-                child: Mission1Button('Mission 1', Colors.green,Colors.black, 500,100,widget.missionSelected)),
+          SizedBox(height: 30),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => SecAnalystMission1(),
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Mission1Button(
+                'Mission 1',
+                Colors.green,
+                Colors.black,
+                500,
+                100,
+                widget.missionSelected,
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Mission2Button('Mission 2', Colors.deepOrange,Colors.black, 500,100, widget.missionSelected),
+            child: Mission2Button(
+              'Mission 2',
+              Colors.deepOrange,
+              Colors.black,
+              500,
+              100,
+              widget.missionSelected,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Mission3Button('Mission 3', Colors.red,Colors.black, 500,100, widget.missionSelected),
-          )
-
+            child: Mission3Button(
+              'Mission 3',
+              Colors.red,
+              Colors.black,
+              500,
+              100,
+              widget.missionSelected,
+            ),
+          ),
         ],
       ),
     );
