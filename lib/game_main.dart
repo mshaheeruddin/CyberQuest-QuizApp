@@ -16,27 +16,24 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: 30),
-                child: IconButton(onPressed: () {
-                }, icon: FaIcon(FontAwesomeIcons.arrowLeft)),
-              )
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 14),
+                  child: Text(
+                    "Welcome To CyberQuest Game",
+                    style: GoogleFonts.adventPro(fontSize: 50),
+                  ),
+                ),
+              ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 14),
-            child: Text(
-              "Welcome To CyberQuest Game",
-              style: GoogleFonts.adventPro(fontSize: 30),
-            ),
-          ),
+          SizedBox(height: 60,),
 
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 20),
@@ -48,12 +45,7 @@ class _MainScreenState extends State<MainScreen> {
           SizedBox(height: 30,),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => MissionSelectionScreen('Security Analyst')));
-                },
-                child: ButtonWidget('Security Analyst', Colors.blueGrey,Colors.black, 500,100)),
+            child: ButtonWidget('Security Analyst', Colors.blueGrey,Colors.black, 500,100),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

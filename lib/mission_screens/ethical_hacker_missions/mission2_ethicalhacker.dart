@@ -9,14 +9,14 @@ import 'package:audioplayers/audioplayers.dart';
 
 import '../../game_main.dart';
 
-class SecAnalystMission1 extends StatefulWidget {
-  const SecAnalystMission1({Key? key}) : super(key: key);
+class EthicalHackerMission2 extends StatefulWidget {
+  const EthicalHackerMission2({Key? key}) : super(key: key);
 
   @override
-  State<SecAnalystMission1> createState() => _SecAnalystMission1State();
+  State<EthicalHackerMission2> createState() => _EthicalHackerMission2State();
 }
 
-class _SecAnalystMission1State extends State<SecAnalystMission1> {
+class _EthicalHackerMission2State extends State<EthicalHackerMission2> {
   final player = AudioPlayer();
 
   void playBackgroundMusic() async {
@@ -41,150 +41,205 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
 
   List<Map<String, dynamic>> _questions = [
     {
-      'question': 'What is a SQL injection attack?',
+      'question': 'What is session hijacking?',
       'options': [
-        'An attack that exploits vulnerabilities in a database query language',
-        'An attack that targets social engineering',
-        'An attack that floods a network with traffic'
+        'Gaining unauthorized access to a user\'s session',
+        'Exploiting vulnerabilities in a web application database',
+        'Disrupting network traffic'
       ],
-      'answer': 'An attack that exploits vulnerabilities in a database query language'
+      'answer': 'Gaining unauthorized access to a user\'s session'
     },
     {
-      'question': 'What is a cross-site scripting (XSS) attack?',
+      'question': 'What is the purpose of a buffer overflow attack?',
       'options': [
-        'An attack that manipulates user input and executes malicious scripts in a web application',
-        'An attack that intercepts network traffic to gather sensitive information',
-        'An attack that tricks users into revealing confidential information'
+        'Exploiting a programming error to overwrite a system\'s memory',
+        'Intercepting and modifying network traffic',
+        'Tricking users into revealing confidential information'
       ],
-      'answer': 'An attack that manipulates user input and executes malicious scripts in a web application'
+      'answer': 'Exploiting a programming error to overwrite a system\'s memory'
     },
     {
-      'question': 'What is privilege escalation?',
+      'question': 'What is the concept of rootkit in ethical hacking?',
       'options': [
-        'An attack that bypasses access controls to gain higher privileges',
-        'An attack that exploits vulnerabilities in network protocols',
-        'An attack that floods a network with traffic'
+        'A set of tools and techniques used to gain and maintain unauthorized access to a system',
+        'Manipulating human psychology to trick individuals into revealing confidential information',
+        'Creating backups of important system files'
       ],
-      'answer': 'An attack that bypasses access controls to gain higher privileges'
+      'answer': 'A set of tools and techniques used to gain and maintain unauthorized access to a system'
     },
     {
-      'question': 'What is a firewall?',
+      'question': 'What is the purpose of a honeypot in network security?',
+      'options': [
+        'A decoy system designed to attract and monitor attackers',
+        'Encrypting sensitive data to protect it from unauthorized access',
+        'Creating clones of a system to distribute network traffic'
+      ],
+      'answer': 'A decoy system designed to attract and monitor attackers'
+    },
+    {
+      'question': 'What is the concept of man-in-the-middle (MITM) attack?',
+      'options': [
+        'Intercepting and altering communication between two parties without their knowledge',
+        'Exploiting vulnerabilities in network protocols',
+        'Overloading a system with excessive traffic'
+      ],
+      'answer': 'Intercepting and altering communication between two parties without their knowledge'
+    },
+    {
+      'question': 'What is the purpose of a VPN in network security?',
+      'options': [
+        'Creating a secure and encrypted connection over a public network',
+        'Monitoring and controlling incoming and outgoing network traffic',
+        'Disrupting network traffic to make it unavailable'
+      ],
+      'answer': 'Creating a secure and encrypted connection over a public network'
+    },
+    {
+      'question': 'What is the concept of DNS poisoning?',
+      'options': [
+        'Manipulating DNS resolution to redirect users to malicious websites',
+        'Gaining higher levels of access and privileges than initially authorized',
+        'Exploiting vulnerabilities in a web application database'
+      ],
+      'answer': 'Manipulating DNS resolution to redirect users to malicious websites'
+    },
+    {
+      'question': 'What is the purpose of a proxy server in ethical hacking?',
+      'options': [
+        'Acting as an intermediary between a client and a server to enhance privacy and security',
+        'Protecting sensitive information by converting it into unreadable form',
+        'Exploiting vulnerabilities in a database query language'
+      ],
+      'answer': 'Acting as an intermediary between a client and a server to enhance privacy and security'
+    },
+    {
+      'question': 'What is the concept of wireless hacking in ethical hacking?',
+      'options': [
+        'Gaining unauthorized access to wireless networks',
+        'Tricking users into revealing confidential information',
+        'Intercepting and modifying network traffic'
+      ],
+      'answer': 'Gaining unauthorized access to wireless networks'
+    },
+    {
+      'question': 'What is the purpose of a firewall in network security?',
       'options': [
         'A software or hardware-based security system that monitors incoming and outgoing network traffic',
-        'A type of malware that encrypts a user\'s files and demands a ransom for their release',
-        'A form of attack that tricks users into revealing confidential information'
+        'Encrypting sensitive data to protect it from unauthorized access',
+        'Creating backups of important system files'
       ],
       'answer': 'A software or hardware-based security system that monitors incoming and outgoing network traffic'
     },
     {
-      'question': 'What is encryption?',
+      'question': 'What is the concept of social engineering in ethical hacking?',
       'options': [
-        'The process of converting plaintext into ciphertext to protect sensitive information',
-        'A software or hardware-based security system that monitors incoming and outgoing network traffic',
-        'A type of malware that encrypts a user\'s files and demands a ransom for their release'
+        'Manipulating human psychology to trick individuals into revealing confidential information',
+        'Exploiting vulnerabilities in network protocols',
+        'Overloading a system with excessive traffic'
       ],
-      'answer': 'The process of converting plaintext into ciphertext to protect sensitive information'
+      'answer': 'Manipulating human psychology to trick individuals into revealing confidential information'
     },
     {
-      'question': 'What is a DDoS attack?',
+      'question': 'What is the purpose of vulnerability scanning in ethical hacking?',
       'options': [
-        'An attack that floods a network or server with a high volume of traffic to make it unavailable',
-        'An attack that manipulates user input and executes malicious scripts in a web application',
-        'An attack that targets social engineering'
+        'Identifying and assessing security vulnerabilities in a system or network',
+        'Intercepting and altering communication between two parties without their knowledge',
+        'Creating clones of a system to distribute network traffic'
       ],
-      'answer': 'An attack that floods a network or server with a high volume of traffic to make it unavailable'
+      'answer': 'Identifying and assessing security vulnerabilities in a system or network'
     },
     {
-      'question': 'What is a vulnerability assessment?',
+      'question': 'What is the concept of reverse engineering in ethical hacking?',
       'options': [
-        'A systematic approach to identifying and evaluating security vulnerabilities in a system',
-        'A software or hardware-based security system that monitors incoming and outgoing network traffic',
-        'An attack that exploits vulnerabilities in network protocols'
+        'Analyzing and understanding the inner workings of a system or software',
+        'Exploiting a programming error to overwrite a system\'s memory',
+        'Tricking users into revealing confidential information'
       ],
-      'answer': 'A systematic approach to identifying and evaluating security vulnerabilities in a system'
+      'answer': 'Analyzing and understanding the inner workings of a system or software'
     },
     {
-      'question': 'What is two-factor authentication?',
+      'question': 'What is the purpose of a password cracking tool in ethical hacking?',
       'options': [
-        'A security mechanism that requires users to provide two forms of identification to access a system',
-        'A type of malware that encrypts a user\'s files and demands a ransom for their release',
-        'An attack that manipulates user input and executes malicious scripts in a web application'
+        'Attempting to guess passwords by systematically trying all possible combinations',
+        'Encrypting sensitive data to protect it from unauthorized access',
+        'Monitoring and controlling incoming and outgoing network traffic'
       ],
-      'answer': 'A security mechanism that requires users to provide two forms of identification to access a system'
+      'answer': 'Attempting to guess passwords by systematically trying all possible combinations'
     },
     {
-      'question': 'What is social engineering?',
+      'question': 'What is the concept of privilege escalation in ethical hacking?',
       'options': [
-        'A form of attack that tricks users into revealing confidential information',
-        'An attack that manipulates user input and executes malicious scripts in a web application',
-        'A security mechanism that requires users to provide two forms of identification to access a system'
+        'Gaining higher levels of access and privileges than initially authorized',
+        'Exploiting vulnerabilities in a web application database',
+        'Overloading a system with excessive traffic'
       ],
-      'answer': 'A form of attack that tricks users into revealing confidential information'
+      'answer': 'Gaining higher levels of access and privileges than initially authorized'
     },
     {
-      'question': 'What is malware?',
+      'question': 'What is the purpose of a vulnerability exploit in ethical hacking?',
       'options': [
-        'Malicious software designed to disrupt, damage, or gain unauthorized access to a computer system',
-        'A systematic approach to identifying and evaluating security vulnerabilities in a system',
-        'An attack that targets social engineering'
+        'Taking advantage of security vulnerabilities to gain unauthorized access or control',
+        'Manipulating human psychology to trick individuals into revealing confidential information',
+        'Exploiting a programming error to overwrite a system\'s memory'
       ],
-      'answer': 'Malicious software designed to disrupt, damage, or gain unauthorized access to a computer system'
+      'answer': 'Taking advantage of security vulnerabilities to gain unauthorized access or control'
     },
     {
-      'question': 'What is a phishing attack?',
+      'question': 'What is the concept of SQL injection in ethical hacking?',
       'options': [
-        'An attack that tricks users into revealing confidential information',
-        'An attack that floods a network or server with a high volume of traffic to make it unavailable',
-        'An attack that exploits vulnerabilities in a database query language'
+        'Exploiting vulnerabilities in a database query language to manipulate database content',
+        'Intercepting and modifying network traffic',
+        'Tricking users into revealing confidential information'
       ],
-      'answer': 'An attack that tricks users into revealing confidential information'
+      'answer': 'Exploiting vulnerabilities in a database query language to manipulate database content'
     },
     {
-      'question': 'What is network security?',
+      'question': 'What is the purpose of a denial-of-service (DoS) attack in ethical hacking?',
       'options': [
-        'The practice of protecting a network and its data from unauthorized access or attacks',
-        'A form of attack that tricks users into revealing confidential information',
-        'A software or hardware-based security system that monitors incoming and outgoing network traffic'
+        'Disrupting the normal functioning of a system or network',
+        'Gaining unauthorized access to a user\'s session',
+        'Creating backups of important system files'
       ],
-      'answer': 'The practice of protecting a network and its data from unauthorized access or attacks'
+      'answer': 'Disrupting the normal functioning of a system or network'
     },
     {
-      'question': 'What is a brute force attack?',
+      'question': 'What is the concept of cryptography in ethical hacking?',
       'options': [
-        'An attack that attempts to guess passwords or encryption keys by systematically trying all possible combinations',
-        'A systematic approach to identifying and evaluating security vulnerabilities in a system',
-        'An attack that exploits vulnerabilities in a database query language'
+        'Protecting sensitive information by converting it into unreadable form',
+        'Exploiting vulnerabilities in network protocols',
+        'Overloading a system with excessive traffic'
       ],
-      'answer': 'An attack that attempts to guess passwords or encryption keys by systematically trying all possible combinations'
+      'answer': 'Protecting sensitive information by converting it into unreadable form'
     },
     {
-      'question': 'What is a vulnerability?',
+      'question': 'What is the purpose of a phishing campaign in ethical hacking?',
       'options': [
-        'A weakness or flaw in a system that can be exploited by an attacker',
-        'A type of malware that encrypts a user\'s files and demands a ransom for their release',
-        'An attack that floods a network or server with a high volume of traffic to make it unavailable'
+        'Tricking users into revealing confidential information',
+        'Exploiting a programming error to overwrite a system\'s memory',
+        'Creating clones of a system to distribute network traffic'
       ],
-      'answer': 'A weakness or flaw in a system that can be exploited by an attacker'
+      'answer': 'Tricking users into revealing confidential information'
     },
     {
-      'question': 'What is a security incident?',
+      'question': 'What is the concept of malware analysis in ethical hacking?',
       'options': [
-        'An event or occurrence that indicates a possible breach of security policies or safeguards',
-        'A form of attack that tricks users into revealing confidential information',
-        'A systematic approach to identifying and evaluating security vulnerabilities in a system'
+        'Analyzing and understanding the behavior and characteristics of malicious software',
+        'Exploiting vulnerabilities in a web application database',
+        'Intercepting and altering communication between two parties without their knowledge'
       ],
-      'answer': 'An event or occurrence that indicates a possible breach of security policies or safeguards'
+      'answer': 'Analyzing and understanding the behavior and characteristics of malicious software'
     },
     {
-      'question': 'What is access control?',
+      'question': 'What is the purpose of a port scanner in ethical hacking?',
       'options': [
-        'The process of granting or denying specific permissions to authorized users',
-        'A security mechanism that requires users to provide two forms of identification to access a system',
-        'An attack that manipulates user input and executes malicious scripts in a web application'
+        'Identifying open ports and services on a network',
+        'Manipulating human psychology to trick individuals into revealing confidential information',
+        'Creating backups of important system files'
       ],
-      'answer': 'The process of granting or denying specific permissions to authorized users'
+      'answer': 'Identifying open ports and services on a network'
     },
   ];
+
 
 
   void _selectAnswer(String selectedAnswer) {
@@ -224,11 +279,11 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
     String message;
 
     if (_score >= 15) {
-      message = "Great job, Security Analyst! You did an excellent job!";
+      message = "Great job, Ethical Hacker! You did an excellent job!";
     } else if (_score >= 10) {
-      message = "Well done, Security Analyst! You did a good job!";
+      message = "Well done, Ethical Hacker! You did a good job!";
     } else {
-      message = "Good effort, Security Analyst! Keep practicing!";
+      message = "Good effort, Ethical Hacker! Keep practicing!";
     }
 
     showDialog(
@@ -278,7 +333,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 14),
             child: Text(
-              "Welcome To Mission 1, Security Analyst!",
+              "Welcome To Mission 2, Ethical Hacker!",
               style: GoogleFonts.adventPro(fontSize: 30),
             ),
           ),
@@ -421,6 +476,3 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
     return shuffledOptions;
   }
 }
-
-
-

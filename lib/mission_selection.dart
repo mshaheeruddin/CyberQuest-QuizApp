@@ -3,12 +3,13 @@ import 'package:cyberquest_isgame/components/ButtonWidgetForMissions.dart';
 import 'package:cyberquest_isgame/components/Mission1Button.dart';
 import 'package:cyberquest_isgame/components/Mission2Button.dart';
 import 'package:cyberquest_isgame/components/Mission3Button.dart';
-import 'package:cyberquest_isgame/mission_screens/security_analyst_mission1/mission1_secanalyst.dart';
 import 'package:cyberquest_isgame/mission_selection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'mission_screens/security_analyst_missions/mission1_secanalyst.dart';
 
 class MissionSelectionScreen extends StatefulWidget {
   String missionSelected;
@@ -56,12 +57,7 @@ class _MissionSelectionScreenState extends State<MissionSelectionScreen> {
           SizedBox(height: 30,),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => SecAnalystMission1()));
-                },
-                child: Mission1Button('Mission 1', Colors.green,Colors.black, 500,100,widget.missionSelected)),
+            child: Mission1Button('Mission 1', Colors.green,Colors.black, 500,100,widget.missionSelected),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

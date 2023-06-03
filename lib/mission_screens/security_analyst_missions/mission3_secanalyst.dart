@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+
+import '../../game_main.dart';
 
 class SecAnalystMission3 extends StatefulWidget {
   const SecAnalystMission3({Key? key}) : super(key: key);
@@ -12,7 +16,7 @@ class SecAnalystMission3 extends StatefulWidget {
 }
 
 class _SecAnalystMission3State extends State<SecAnalystMission3> {
-  final int _duration = 10;
+  final int _duration = 20;
   final CountDownController _controller = CountDownController();
 
   bool _isCountdownStarted = false;
@@ -232,6 +236,8 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => MainScreen()));
             },
             child: Text('OK'),
           ),
@@ -368,7 +374,7 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
                     ButtonBar(
                       alignment: MainAxisAlignment.center,
                       children: [
-                        for (String option in _questions[_currentQuestionIndex]['options'])
+                        for (String option in _shuffleOptions(_questions[_currentQuestionIndex]['options']))
                           SizedBox(
                             width: 400,
                             child: ElevatedButton(
@@ -386,5 +392,21 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
         ],
       ),
     );
+  }
+
+  final _random = Random();
+  List<String> _shuffleOptions(List<String> options) {
+    // Create a copy of the original options list
+    List<String> shuffledOptions = List<String>.from(options);
+
+    // Shuffle the options using the Fisher-Yates algorithm
+    for (int i = shuffledOptions.length - 1; i > 0; i--) {
+      int j = _random.nextInt(i + 1);
+      String temp = shuffledOptions[i];
+      shuffledOptions[i] = shuffledOptions[j];
+      shuffledOptions[j] = temp;
+    }
+
+    return shuffledOptions;
   }
 }

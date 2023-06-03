@@ -1,8 +1,12 @@
-import 'package:cyberquest_isgame/mission_screens/security_analyst_mission1/mission1_secanalyst.dart';
+import 'dart:developer';
+
+import 'package:cyberquest_isgame/mission_screens/pen_tester_missions/mission1_pentester.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../mission_screens/ethical_hacker_missions/mission1_ethicalhacker.dart';
+import '../mission_screens/security_analyst_missions/mission1_secanalyst.dart';
 import '../mission_selection.dart';
 
 
@@ -22,8 +26,19 @@ class Mission1Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: () {
+        log(role);
+      if(role == "Security Analyst") {
         Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => SecAnalystMission1()));
+            CupertinoPageRoute(builder: (context) => SecAnalystMission1())); }
+
+      if(role == "Ethical Hacker") {
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => EthicalHackerMission1())); }
+
+      if(role == "Pen Tester") {
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => PenTesterMission1())); }
+
       },
       icon: Padding(
         padding: EdgeInsets.only(left: 14),
