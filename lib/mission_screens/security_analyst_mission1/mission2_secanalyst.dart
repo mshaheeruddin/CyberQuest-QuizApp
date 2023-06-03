@@ -24,15 +24,6 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
 
   List<Map<String, dynamic>> _questions = [
     {
-      "question": "What is the difference between symmetric and asymmetric encryption?",
-      "options": [
-        "Symmetric encryption uses a single key for both encryption and decryption, while asymmetric encryption uses a pair of keys: public and private.",
-        "Symmetric encryption uses a pair of keys: public and private, while asymmetric encryption uses a single key for both encryption and decryption.",
-        "Symmetric encryption uses a key length of 1024 bits, while asymmetric encryption uses a key length of 256 bits."
-      ],
-      "answer": "Symmetric encryption uses a single key for both encryption and decryption, while asymmetric encryption uses a pair of keys: public and private."
-    },
-    {
       "question": "Which one is more secure: symmetric or asymmetric encryption?",
       "options": [
         "Symmetric encryption is more secure because it uses a longer key length.",
@@ -71,8 +62,8 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
     {
       "question": "How can buffer overflow attacks be prevented or mitigated?",
       "options": [
-        "By using input validation and proper bounds checking to ensure data input does not exceed allocated memory.",
         "By encrypting sensitive data to protect it from unauthorized access.",
+        "By using input validation and proper bounds checking to ensure data input does not exceed allocated memory.",
         "By using strong passwords and two-factor authentication."
       ],
       "answer": "By using input validation and proper bounds checking to ensure data input does not exceed allocated memory."
@@ -80,9 +71,9 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
     {
       "question": "What is a penetration test?",
       "options": [
-        "A test to identify vulnerabilities and assess the security of a system by simulating real-world attacks.",
         "A test to measure the performance and scalability of a system under high load conditions.",
-        "A test to check the compatibility of software across different platforms."
+        "A test to check the compatibility of software across different platforms.",
+        "A test to identify vulnerabilities and assess the security of a system by simulating real-world attacks."
       ],
       "answer": "A test to identify vulnerabilities and assess the security of a system by simulating real-world attacks."
     },
