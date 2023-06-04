@@ -1,18 +1,37 @@
+import 'package:cyberquest_isgame/game_main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'dart:math';
 
-class SecAnalystMission2 extends StatefulWidget {
-  const SecAnalystMission2({Key? key}) : super(key: key);
+class EthicalHackerMission1 extends StatefulWidget {
+  const EthicalHackerMission1({Key? key}) : super(key: key);
 
   @override
-  State<SecAnalystMission2> createState() => _SecAnalystMission2State();
+  State<EthicalHackerMission1> createState() => _EthicalHackerMission1State();
 }
 
-class _SecAnalystMission2State extends State<SecAnalystMission2> {
-  final int _duration = 10;
+class _EthicalHackerMission1State extends State<EthicalHackerMission1> {
+  final player = AudioPlayer();
+
+  void playBackgroundMusic() async {
+    await player.play(UrlSource('https://audio.jukehost.co.uk/79WHZvEEBVtB8EgiDeegrGm9fUavd8BU'));
+  }
+
+  void playFailedMusic() async {
+    await player.play(UrlSource('https://audio.jukehost.co.uk/UTqzgWnA5875SGvWSxzlTFHkM05jnIub'));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    playBackgroundMusic();
+  }
+
+  final int _duration = 20;
   final CountDownController _controller = CountDownController();
 
   bool _isCountdownStarted = false;
@@ -24,87 +43,95 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
 
   List<Map<String, dynamic>> _questions = [
     {
-      "question": "Which one is more secure: symmetric or asymmetric encryption?",
-      "options": [
-        "Symmetric encryption is more secure because it uses a longer key length.",
-        "Asymmetric encryption is more secure because it uses a pair of keys.",
-        "Both symmetric and asymmetric encryption are equally secure."
+      'question': 'What is footprinting in ethical hacking?',
+      'options': [
+        'Gaining information about a target system or network',
+        'Attempting to gain unauthorized access to a system',
+        'Intercepting and modifying network traffic'
       ],
-      "answer": "Asymmetric encryption is more secure because it uses a pair of keys."
+      'answer': 'Gaining information about a target system or network'
     },
     {
-      "question": "What is a zero-day vulnerability?",
-      "options": [
-        "A vulnerability that has been discovered but not yet patched.",
-        "A vulnerability that allows attackers to gain unauthorized access to a system.",
-        "A vulnerability that is unknown to software vendors and has no available patch."
+      'question': 'What is the purpose of a vulnerability assessment?',
+      'options': [
+        'Identifying and evaluating security vulnerabilities in a system',
+        'Exploiting vulnerabilities to gain unauthorized access',
+        'Disrupting network traffic'
       ],
-      "answer": "A vulnerability that is unknown to software vendors and has no available patch."
+      'answer': 'Identifying and evaluating security vulnerabilities in a system'
     },
     {
-      "question": "How can zero-day vulnerabilities impact cybersecurity?",
-      "options": [
-        "Zero-day vulnerabilities can be exploited by attackers to launch targeted attacks and gain unauthorized access to systems.",
-        "Zero-day vulnerabilities have no impact on cybersecurity as they are unknown to software vendors.",
-        "Zero-day vulnerabilities only affect outdated software versions."
+      'question': 'What is the main goal of penetration testing?',
+      'options': [
+        'Assessing the security of a system by simulating real-world attacks',
+        'Creating new vulnerabilities in a system',
+        'Interfering with network communication'
       ],
-      "answer": "Zero-day vulnerabilities can be exploited by attackers to launch targeted attacks and gain unauthorized access to systems."
+      'answer': 'Assessing the security of a system by simulating real-world attacks'
     },
     {
-      "question": "What is a buffer overflow attack?",
-      "options": [
-        "An attack that overwhelms a system's memory by inputting more data than it can handle, leading to a crash or execution of malicious code.",
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that manipulates user input and executes malicious scripts in a web application."
+      'question': 'What is the concept of social engineering in ethical hacking?',
+      'options': [
+        'Manipulating human psychology to trick individuals into revealing confidential information',
+        'Exploiting vulnerabilities in network protocols',
+        'Overloading a system with excessive traffic'
       ],
-      "answer": "An attack that overwhelms a system's memory by inputting more data than it can handle, leading to a crash or execution of malicious code."
+      'answer': 'Manipulating human psychology to trick individuals into revealing confidential information'
     },
     {
-      "question": "How can buffer overflow attacks be prevented or mitigated?",
-      "options": [
-        "By encrypting sensitive data to protect it from unauthorized access.",
-        "By using input validation and proper bounds checking to ensure data input does not exceed allocated memory.",
-        "By using strong passwords and two-factor authentication."
+      'question': 'What is the purpose of a firewall in network security?',
+      'options': [
+        'Monitoring and controlling incoming and outgoing network traffic',
+        'Encrypting sensitive data to protect it from unauthorized access',
+        'Creating backups of important system files'
       ],
-      "answer": "By using input validation and proper bounds checking to ensure data input does not exceed allocated memory."
+      'answer': 'Monitoring and controlling incoming and outgoing network traffic'
     },
     {
-      "question": "What is a penetration test?",
-      "options": [
-        "A test to measure the performance and scalability of a system under high load conditions.",
-        "A test to check the compatibility of software across different platforms.",
-        "A test to identify vulnerabilities and assess the security of a system by simulating real-world attacks."
+      'question': 'What is the difference between white hat hackers and black hat hackers?',
+      'options': [
+        'White hat hackers are ethical hackers who use their skills for good, while black hat hackers engage in malicious activities',
+        'White hat hackers focus on physical security, while black hat hackers focus on digital security',
+        'White hat hackers work for the government, while black hat hackers work independently'
       ],
-      "answer": "A test to identify vulnerabilities and assess the security of a system by simulating real-world attacks."
+      'answer': 'White hat hackers are ethical hackers who use their skills for good, while black hat hackers engage in malicious activities'
     },
     {
-      "question": "Why is conducting a penetration test important?",
-      "options": [
-        "To ensure compliance with industry regulations and standards.",
-        "To identify vulnerabilities and weaknesses in a system before they are exploited by attackers.",
-        "To measure the performance and scalability of a system under high load conditions."
+      'question': 'What is the concept of privilege escalation?',
+      'options': [
+        'Gaining higher levels of access and privileges than initially authorized',
+        'Exploiting vulnerabilities in a database query language',
+        'Tricking users into revealing confidential information'
       ],
-      "answer": "To identify vulnerabilities and weaknesses in a system before they are exploited by attackers."
+      'answer': 'Gaining higher levels of access and privileges than initially authorized'
     },
     {
-      "question": "What is a man-in-the-middle (MITM) attack?",
-      "options": [
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that overwhelms a system's memory by inputting more data than it can handle.",
-        "An attack that manipulates user input and executes malicious scripts in a web application."
+      'question': 'What is the purpose of cryptography in ethical hacking?',
+      'options': [
+        'Protecting sensitive information by converting it into unreadable form',
+        'Disrupting network traffic to make it unavailable',
+        'Exploiting vulnerabilities in web applications'
       ],
-      "answer": "An attack that intercepts network traffic to gather sensitive information."
+      'answer': 'Protecting sensitive information by converting it into unreadable form'
     },
     {
-      "question": "How can MITM attacks be prevented or detected?",
-      "options": [
-        "By using strong encryption, such as HTTPS, to secure communication channels.",
-        "By implementing strict firewall rules to block unauthorized network traffic.",
-        "By validating user input and implementing proper error handling in web applications."
+      'question': 'What is the concept of SQL injection in ethical hacking?',
+      'options': [
+        'Exploiting vulnerabilities in a database query language to manipulate database operations',
+        'Tricking users into revealing confidential information',
+        'Intercepting and modifying network traffic'
       ],
-      "answer": "By using strong encryption, such as HTTPS, to secure communication channels."
+      'answer': 'Exploiting vulnerabilities in a database query language to manipulate database operations'
     },
-    // Add more questions here...
+    {
+      'question': 'What is the purpose of ethical hacking?',
+      'options': [
+        'Identifying and fixing vulnerabilities in systems to improve overall security',
+        'Disrupting the operations of target systems or networks',
+        'Gaining unauthorized access to sensitive information'
+      ],
+      'answer': 'Identifying and fixing vulnerabilities in systems to improve overall security'
+    }
   ];
 
 
@@ -146,11 +173,12 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
     String message;
 
     if (_score >= 15) {
-      message = "Great job, Security Analyst! You did an excellent job!";
+      message = "Great job, Ethical Hacker! You did an excellent job!";
     } else if (_score >= 10) {
-      message = "Well done, Security Analyst! You did a good job!";
+      message = "Well done, Ethical Hacker! You did a good job!";
     } else {
-      message = "Good effort, Security Analyst! Keep practicing!";
+      message = "Good effort, Ethical Hacker! Keep practicing!";
+      playFailedMusic();
     }
 
     showDialog(
@@ -169,6 +197,8 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => MainScreen()));
             },
             child: Text('OK'),
           ),
@@ -198,7 +228,7 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 14),
             child: Text(
-              "Welcome To Mission 2, Security Analyst!",
+              "Welcome To Mission 1, Ethical Hacker!",
               style: GoogleFonts.adventPro(fontSize: 30),
             ),
           ),
@@ -305,7 +335,7 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
                     ButtonBar(
                       alignment: MainAxisAlignment.center,
                       children: [
-                        for (String option in _questions[_currentQuestionIndex]['options'])
+                        for (String option in _shuffleOptions(_questions[_currentQuestionIndex]['options']))
                           SizedBox(
                             width: 400,
                             child: ElevatedButton(
@@ -315,6 +345,7 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
                           ),
                       ],
                     ),
+
                   ],
                 ),
               ),
@@ -324,4 +355,22 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
       ),
     );
   }
+
+  final _random = Random();
+  List<String> _shuffleOptions(List<String> options) {
+    // Create a copy of the original options list
+    List<String> shuffledOptions = List<String>.from(options);
+
+    // Shuffle the options using the Fisher-Yates algorithm
+    for (int i = shuffledOptions.length - 1; i > 0; i--) {
+      int j = _random.nextInt(i + 1);
+      String temp = shuffledOptions[i];
+      shuffledOptions[i] = shuffledOptions[j];
+      shuffledOptions[j] = temp;
+    }
+
+    return shuffledOptions;
+  }
+
+
 }

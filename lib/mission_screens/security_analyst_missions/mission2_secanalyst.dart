@@ -1,18 +1,22 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
-class SecAnalystMission3 extends StatefulWidget {
-  const SecAnalystMission3({Key? key}) : super(key: key);
+import '../../game_main.dart';
+
+class SecAnalystMission2 extends StatefulWidget {
+  const SecAnalystMission2({Key? key}) : super(key: key);
 
   @override
-  State<SecAnalystMission3> createState() => _SecAnalystMission3State();
+  State<SecAnalystMission2> createState() => _SecAnalystMission2State();
 }
 
-class _SecAnalystMission3State extends State<SecAnalystMission3> {
-  final int _duration = 10;
+class _SecAnalystMission2State extends State<SecAnalystMission2> {
+  final int _duration = 20;
   final CountDownController _controller = CountDownController();
 
   bool _isCountdownStarted = false;
@@ -24,149 +28,86 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
 
   List<Map<String, dynamic>> _questions = [
     {
-      "question": "What is a Distributed Denial of Service (DDoS) attack?",
+      "question": "Which one is more secure: symmetric or asymmetric encryption?",
       "options": [
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that overwhelms a system or network with a flood of illegitimate requests, rendering it unavailable to users.",
-        "An attack that manipulates user input and executes malicious scripts in a web application."
+        "Symmetric encryption is more secure because it uses a longer key length.",
+        "Asymmetric encryption is more secure because it uses a pair of keys.",
+        "Both symmetric and asymmetric encryption are equally secure."
       ],
-      "answer": "An attack that overwhelms a system or network with a flood of illegitimate requests, rendering it unavailable to users."
-    },
-    {
-      "question": "How can DDoS attacks be mitigated?",
-      "options": [
-        "By implementing intrusion detection systems to monitor network traffic.",
-        "By regularly updating software and systems to patch known vulnerabilities.",
-        "By using traffic filtering techniques and deploying DDoS mitigation services."
-      ],
-      "answer": "By using traffic filtering techniques and deploying DDoS mitigation services."
-    },
-    {
-      "question": "What is a SQL injection attack?",
-      "options": [
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that overwhelms a system's memory by inputting more data than it can handle.",
-        "An attack that manipulates user input to execute unauthorized SQL queries on a web application's database."
-      ],
-      "answer": "An attack that manipulates user input to execute unauthorized SQL queries on a web application's database."
-    },
-    {
-      "question": "How can SQL injection attacks be prevented?",
-      "options": [
-        "By implementing strong encryption algorithms to protect sensitive data.",
-        "By validating and sanitizing user input before using it in SQL queries.",
-        "By using secure protocols, such as SSH, for remote database connections."
-      ],
-      "answer": "By validating and sanitizing user input before using it in SQL queries."
-    },
-    {
-      "question": "What is a cross-site scripting (XSS) attack?",
-      "options": [
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that overwhelms a system's memory by inputting more data than it can handle.",
-        "An attack that injects malicious scripts into a web application, which are then executed by users' browsers."
-      ],
-      "answer": "An attack that injects malicious scripts into a web application, which are then executed by users' browsers."
-    },
-    {
-      "question": "How can XSS attacks be prevented?",
-      "options": [
-        "By implementing secure password policies and multi-factor authentication.",
-        "By validating and sanitizing user input before displaying it on web pages.",
-        "By using firewalls and intrusion detection systems to monitor network traffic."
-      ],
-      "answer": "By validating and sanitizing user input before displaying it on web pages."
-    },
-    {
-      "question": "What is a privilege escalation attack?",
-      "options": [
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that grants unauthorized users elevated privileges to access system resources.",
-        "An attack that manipulates user input and executes malicious scripts in a web application."
-      ],
-      "answer": "An attack that grants unauthorized users elevated privileges to access system resources."
-    },
-    {
-      "question": "How can privilege escalation attacks be prevented?",
-      "options": [
-        "By implementing strong access control mechanisms and regularly reviewing user permissions.",
-        "By using secure coding practices and validating user input in web applications.",
-        "By encrypting sensitive data at rest and in transit."
-      ],
-      "answer": "By implementing strong access control mechanisms and regularly reviewing user permissions."
+      "answer": "Asymmetric encryption is more secure because it uses a pair of keys."
     },
     {
       "question": "What is a zero-day vulnerability?",
       "options": [
-        "A vulnerability that has been publicly disclosed but not yet patched by the software vendor.",
-        "A vulnerability that has been patched by the software vendor but not yet widely adopted.",
-        "A vulnerability that is unknown to the software vendor and does not have a patch available."
+        "A vulnerability that has been discovered but not yet patched.",
+        "A vulnerability that allows attackers to gain unauthorized access to a system.",
+        "A vulnerability that is unknown to software vendors and has no available patch."
       ],
-      "answer": "A vulnerability that is unknown to the software vendor and does not have a patch available."
+      "answer": "A vulnerability that is unknown to software vendors and has no available patch."
     },
     {
-      "question": "How can organizations protect themselves from zero-day vulnerabilities?",
+      "question": "How can zero-day vulnerabilities impact cybersecurity?",
       "options": [
-        "By regularly updating software and systems to apply the latest security patches.",
-        "By using intrusion detection systems to monitor network traffic for suspicious activity.",
-        "By implementing security measures, such as sandboxing, to isolate potentially malicious code."
+        "Zero-day vulnerabilities can be exploited by attackers to launch targeted attacks and gain unauthorized access to systems.",
+        "Zero-day vulnerabilities have no impact on cybersecurity as they are unknown to software vendors.",
+        "Zero-day vulnerabilities only affect outdated software versions."
       ],
-      "answer": "By regularly updating software and systems to apply the latest security patches."
-    },
-    {
-      "question": "What is social engineering?",
-      "options": [
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that manipulates users into divulging confidential information or performing actions that compromise security.",
-        "An attack that overwhelms a system's memory by inputting more data than it can handle."
-      ],
-      "answer": "An attack that manipulates users into divulging confidential information or performing actions that compromise security."
-    },
-    {
-      "question": "How can organizations protect themselves from social engineering attacks?",
-      "options": [
-        "By implementing strong authentication mechanisms, such as biometric authentication.",
-        "By providing security awareness training to educate employees about common social engineering techniques.",
-        "By using firewalls and intrusion detection systems to monitor network traffic."
-      ],
-      "answer": "By providing security awareness training to educate employees about common social engineering techniques."
-    },
-    {
-      "question": "What is a privilege escalation attack?",
-      "options": [
-        "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that grants unauthorized users elevated privileges to access system resources.",
-        "An attack that manipulates user input and executes malicious scripts in a web application."
-      ],
-      "answer": "An attack that grants unauthorized users elevated privileges to access system resources."
-    },
-    {
-      "question": "How can privilege escalation attacks be prevented?",
-      "options": [
-        "By implementing strong access control mechanisms and regularly reviewing user permissions.",
-        "By using secure coding practices and validating user input in web applications.",
-        "By encrypting sensitive data at rest and in transit."
-      ],
-      "answer": "By implementing strong access control mechanisms and regularly reviewing user permissions."
+      "answer": "Zero-day vulnerabilities can be exploited by attackers to launch targeted attacks and gain unauthorized access to systems."
     },
     {
       "question": "What is a buffer overflow attack?",
       "options": [
+        "An attack that overwhelms a system's memory by inputting more data than it can handle, leading to a crash or execution of malicious code.",
         "An attack that intercepts network traffic to gather sensitive information.",
-        "An attack that overwhelms a system's memory by inputting more data than it can handle.",
-        "An attack that manipulates user input to execute unauthorized SQL queries on a web application's database."
+        "An attack that manipulates user input and executes malicious scripts in a web application."
       ],
-      "answer": "An attack that overwhelms a system's memory by inputting more data than it can handle."
+      "answer": "An attack that overwhelms a system's memory by inputting more data than it can handle, leading to a crash or execution of malicious code."
     },
     {
-      "question": "How can buffer overflow attacks be prevented?",
+      "question": "How can buffer overflow attacks be prevented or mitigated?",
       "options": [
-        "By implementing secure password policies and multi-factor authentication.",
-        "By validating and sanitizing user input before using it in SQL queries.",
-        "By using input validation and proper memory management techniques in software development."
+        "By encrypting sensitive data to protect it from unauthorized access.",
+        "By using input validation and proper bounds checking to ensure data input does not exceed allocated memory.",
+        "By using strong passwords and two-factor authentication."
       ],
-      "answer": "By using input validation and proper memory management techniques in software development."
-    }
+      "answer": "By using input validation and proper bounds checking to ensure data input does not exceed allocated memory."
+    },
+    {
+      "question": "What is a penetration test?",
+      "options": [
+        "A test to measure the performance and scalability of a system under high load conditions.",
+        "A test to check the compatibility of software across different platforms.",
+        "A test to identify vulnerabilities and assess the security of a system by simulating real-world attacks."
+      ],
+      "answer": "A test to identify vulnerabilities and assess the security of a system by simulating real-world attacks."
+    },
+    {
+      "question": "Why is conducting a penetration test important?",
+      "options": [
+        "To ensure compliance with industry regulations and standards.",
+        "To identify vulnerabilities and weaknesses in a system before they are exploited by attackers.",
+        "To measure the performance and scalability of a system under high load conditions."
+      ],
+      "answer": "To identify vulnerabilities and weaknesses in a system before they are exploited by attackers."
+    },
+    {
+      "question": "What is a man-in-the-middle (MITM) attack?",
+      "options": [
+        "An attack that intercepts network traffic to gather sensitive information.",
+        "An attack that overwhelms a system's memory by inputting more data than it can handle.",
+        "An attack that manipulates user input and executes malicious scripts in a web application."
+      ],
+      "answer": "An attack that intercepts network traffic to gather sensitive information."
+    },
+    {
+      "question": "How can MITM attacks be prevented or detected?",
+      "options": [
+        "By using strong encryption, such as HTTPS, to secure communication channels.",
+        "By implementing strict firewall rules to block unauthorized network traffic.",
+        "By validating user input and implementing proper error handling in web applications."
+      ],
+      "answer": "By using strong encryption, such as HTTPS, to secure communication channels."
+    },
     // Add more questions here...
   ];
 
@@ -232,6 +173,8 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => MainScreen()));
             },
             child: Text('OK'),
           ),
@@ -261,7 +204,7 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 14),
             child: Text(
-              "Welcome To Mission 3, Security Analyst!",
+              "Welcome To Mission 2, Security Analyst!",
               style: GoogleFonts.adventPro(fontSize: 30),
             ),
           ),
@@ -368,7 +311,7 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
                     ButtonBar(
                       alignment: MainAxisAlignment.center,
                       children: [
-                        for (String option in _questions[_currentQuestionIndex]['options'])
+                        for (String option in _shuffleOptions(_questions[_currentQuestionIndex]['options']))
                           SizedBox(
                             width: 400,
                             child: ElevatedButton(
@@ -386,5 +329,21 @@ class _SecAnalystMission3State extends State<SecAnalystMission3> {
         ],
       ),
     );
+  }
+
+  final _random = Random();
+  List<String> _shuffleOptions(List<String> options) {
+    // Create a copy of the original options list
+    List<String> shuffledOptions = List<String>.from(options);
+
+    // Shuffle the options using the Fisher-Yates algorithm
+    for (int i = shuffledOptions.length - 1; i > 0; i--) {
+      int j = _random.nextInt(i + 1);
+      String temp = shuffledOptions[i];
+      shuffledOptions[i] = shuffledOptions[j];
+      shuffledOptions[j] = temp;
+    }
+
+    return shuffledOptions;
   }
 }

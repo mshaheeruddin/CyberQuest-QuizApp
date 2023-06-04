@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:audioplayers/audioplayers.dart';
+
+import '../../game_main.dart';
 
 class SecAnalystMission1 extends StatefulWidget {
   const SecAnalystMission1({Key? key}) : super(key: key);
@@ -16,8 +20,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
   final player = AudioPlayer();
 
   void playBackgroundMusic() async {
-    await player.play(UrlSource(
-        'https://audio.jukehost.co.uk/79WHZvEEBVtB8EgiDeegrGm9fUavd8BU'));
+    await player.play(UrlSource('https://audio.jukehost.co.uk/79WHZvEEBVtB8EgiDeegrGm9fUavd8BU'));
   }
 
   @override
@@ -26,7 +29,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
     playBackgroundMusic();
   }
 
-  final int _duration = 10;
+  final int _duration = 20;
   final CountDownController _controller = CountDownController();
 
   bool _isCountdownStarted = false;
@@ -34,8 +37,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
   int _currentQuestionIndex = 0;
   int _score = 0;
   String _resultLabel = '';
-  bool _quizCompleted =
-      false; // Flag to track if the quiz was completed before timer stops
+  bool _quizCompleted = false; // Flag to track if the quiz was completed before timer stops
 
   List<Map<String, dynamic>> _questions = [
     {
@@ -45,28 +47,25 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'An attack that targets social engineering',
         'An attack that floods a network with traffic'
       ],
-      'answer':
-          'An attack that exploits vulnerabilities in a database query language'
+      'answer': 'An attack that exploits vulnerabilities in a database query language'
     },
     {
       'question': 'What is a cross-site scripting (XSS) attack?',
       'options': [
+        'An attack that manipulates user input and executes malicious scripts in a web application',
         'An attack that intercepts network traffic to gather sensitive information',
-        'An attack that tricks users into revealing confidential information',
-        'An attack that manipulates user input and executes malicious scripts in a web application'
+        'An attack that tricks users into revealing confidential information'
       ],
-      'answer':
-          'An attack that manipulates user input and executes malicious scripts in a web application'
+      'answer': 'An attack that manipulates user input and executes malicious scripts in a web application'
     },
     {
       'question': 'What is privilege escalation?',
       'options': [
-        'An attack that exploits vulnerabilities in network protocols',
         'An attack that bypasses access controls to gain higher privileges',
+        'An attack that exploits vulnerabilities in network protocols',
         'An attack that floods a network with traffic'
       ],
-      'answer':
-          'An attack that bypasses access controls to gain higher privileges'
+      'answer': 'An attack that bypasses access controls to gain higher privileges'
     },
     {
       'question': 'What is a firewall?',
@@ -75,18 +74,16 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'A type of malware that encrypts a user\'s files and demands a ransom for their release',
         'A form of attack that tricks users into revealing confidential information'
       ],
-      'answer':
-          'A software or hardware-based security system that monitors incoming and outgoing network traffic'
+      'answer': 'A software or hardware-based security system that monitors incoming and outgoing network traffic'
     },
     {
       'question': 'What is encryption?',
       'options': [
-        'A software or hardware-based security system that monitors incoming and outgoing network traffic',
         'The process of converting plaintext into ciphertext to protect sensitive information',
+        'A software or hardware-based security system that monitors incoming and outgoing network traffic',
         'A type of malware that encrypts a user\'s files and demands a ransom for their release'
       ],
-      'answer':
-          'The process of converting plaintext into ciphertext to protect sensitive information'
+      'answer': 'The process of converting plaintext into ciphertext to protect sensitive information'
     },
     {
       'question': 'What is a DDoS attack?',
@@ -95,18 +92,16 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'An attack that manipulates user input and executes malicious scripts in a web application',
         'An attack that targets social engineering'
       ],
-      'answer':
-          'An attack that floods a network or server with a high volume of traffic to make it unavailable'
+      'answer': 'An attack that floods a network or server with a high volume of traffic to make it unavailable'
     },
     {
       'question': 'What is a vulnerability assessment?',
       'options': [
+        'A systematic approach to identifying and evaluating security vulnerabilities in a system',
         'A software or hardware-based security system that monitors incoming and outgoing network traffic',
-        'An attack that exploits vulnerabilities in network protocols',
-        'A systematic approach to identifying and evaluating security vulnerabilities in a system'
+        'An attack that exploits vulnerabilities in network protocols'
       ],
-      'answer':
-          'A systematic approach to identifying and evaluating security vulnerabilities in a system'
+      'answer': 'A systematic approach to identifying and evaluating security vulnerabilities in a system'
     },
     {
       'question': 'What is two-factor authentication?',
@@ -115,8 +110,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'A type of malware that encrypts a user\'s files and demands a ransom for their release',
         'An attack that manipulates user input and executes malicious scripts in a web application'
       ],
-      'answer':
-          'A security mechanism that requires users to provide two forms of identification to access a system'
+      'answer': 'A security mechanism that requires users to provide two forms of identification to access a system'
     },
     {
       'question': 'What is social engineering?',
@@ -125,28 +119,25 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'An attack that manipulates user input and executes malicious scripts in a web application',
         'A security mechanism that requires users to provide two forms of identification to access a system'
       ],
-      'answer':
-          'A form of attack that tricks users into revealing confidential information'
+      'answer': 'A form of attack that tricks users into revealing confidential information'
     },
     {
       'question': 'What is malware?',
       'options': [
-        'A systematic approach to identifying and evaluating security vulnerabilities in a system',
         'Malicious software designed to disrupt, damage, or gain unauthorized access to a computer system',
+        'A systematic approach to identifying and evaluating security vulnerabilities in a system',
         'An attack that targets social engineering'
       ],
-      'answer':
-          'Malicious software designed to disrupt, damage, or gain unauthorized access to a computer system'
+      'answer': 'Malicious software designed to disrupt, damage, or gain unauthorized access to a computer system'
     },
     {
       'question': 'What is a phishing attack?',
       'options': [
-        'An attack that floods a network or server with a high volume of traffic to make it unavailable',
         'An attack that tricks users into revealing confidential information',
+        'An attack that floods a network or server with a high volume of traffic to make it unavailable',
         'An attack that exploits vulnerabilities in a database query language'
       ],
-      'answer':
-          'An attack that tricks users into revealing confidential information'
+      'answer': 'An attack that tricks users into revealing confidential information'
     },
     {
       'question': 'What is network security?',
@@ -155,8 +146,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'A form of attack that tricks users into revealing confidential information',
         'A software or hardware-based security system that monitors incoming and outgoing network traffic'
       ],
-      'answer':
-          'The practice of protecting a network and its data from unauthorized access or attacks'
+      'answer': 'The practice of protecting a network and its data from unauthorized access or attacks'
     },
     {
       'question': 'What is a brute force attack?',
@@ -165,8 +155,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'A systematic approach to identifying and evaluating security vulnerabilities in a system',
         'An attack that exploits vulnerabilities in a database query language'
       ],
-      'answer':
-          'An attack that attempts to guess passwords or encryption keys by systematically trying all possible combinations'
+      'answer': 'An attack that attempts to guess passwords or encryption keys by systematically trying all possible combinations'
     },
     {
       'question': 'What is a vulnerability?',
@@ -175,8 +164,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'A type of malware that encrypts a user\'s files and demands a ransom for their release',
         'An attack that floods a network or server with a high volume of traffic to make it unavailable'
       ],
-      'answer':
-          'A weakness or flaw in a system that can be exploited by an attacker'
+      'answer': 'A weakness or flaw in a system that can be exploited by an attacker'
     },
     {
       'question': 'What is a security incident?',
@@ -185,20 +173,19 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
         'A form of attack that tricks users into revealing confidential information',
         'A systematic approach to identifying and evaluating security vulnerabilities in a system'
       ],
-      'answer':
-          'An event or occurrence that indicates a possible breach of security policies or safeguards'
+      'answer': 'An event or occurrence that indicates a possible breach of security policies or safeguards'
     },
     {
       'question': 'What is access control?',
       'options': [
+        'The process of granting or denying specific permissions to authorized users',
         'A security mechanism that requires users to provide two forms of identification to access a system',
-        'An attack that manipulates user input and executes malicious scripts in a web application',
-        'The process of granting or denying specific permissions to authorized users'
+        'An attack that manipulates user input and executes malicious scripts in a web application'
       ],
-      'answer':
-          'The process of granting or denying specific permissions to authorized users'
+      'answer': 'The process of granting or denying specific permissions to authorized users'
     },
   ];
+
 
   void _selectAnswer(String selectedAnswer) {
     if (!_isCountdownStarted) {
@@ -260,6 +247,8 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => MainScreen()));
             },
             child: Text('OK'),
           ),
@@ -359,13 +348,11 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
                           onChange: (String timeStamp) {
                             debugPrint('Countdown Changed $timeStamp');
                           },
-                          timeFormatterFunction:
-                              (defaultFormatterFunction, duration) {
+                          timeFormatterFunction: (defaultFormatterFunction, duration) {
                             if (duration.inSeconds == 0) {
                               return "Start";
                             } else {
-                              return Function.apply(
-                                  defaultFormatterFunction, [duration]);
+                              return Function.apply(defaultFormatterFunction, [duration]);
                             }
                           },
                           width: 100,
@@ -376,8 +363,7 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
                     const SizedBox(height: 20),
                     Text(
                       _resultLabel,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -394,20 +380,16 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
                   children: [
                     Text(
                       _questions[_currentQuestionIndex]['question'],
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     ButtonBar(
                       alignment: MainAxisAlignment.center,
                       children: [
-                        for (String option in _questions[_currentQuestionIndex]
-                            ['options'])
+                        for (String option in _shuffleOptions(_questions[_currentQuestionIndex]['options']))
                           SizedBox(
                             width: 400,
                             child: ElevatedButton(
-                              onPressed: _isCountdownStarted
-                                  ? () => _selectAnswer(option)
-                                  : null,
+                              onPressed: _isCountdownStarted ? () => _selectAnswer(option) : null,
                               child: Text(option),
                             ),
                           ),
@@ -422,4 +404,23 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
       ),
     );
   }
+
+  final _random = Random();
+  List<String> _shuffleOptions(List<String> options) {
+    // Create a copy of the original options list
+    List<String> shuffledOptions = List<String>.from(options);
+
+    // Shuffle the options using the Fisher-Yates algorithm
+    for (int i = shuffledOptions.length - 1; i > 0; i--) {
+      int j = _random.nextInt(i + 1);
+      String temp = shuffledOptions[i];
+      shuffledOptions[i] = shuffledOptions[j];
+      shuffledOptions[j] = temp;
+    }
+
+    return shuffledOptions;
+  }
 }
+
+
+

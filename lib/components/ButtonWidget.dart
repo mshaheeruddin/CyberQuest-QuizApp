@@ -23,6 +23,7 @@ class ButtonWidget extends StatelessWidget {
         Navigator.push(context,
             CupertinoPageRoute(builder: (context) => MissionSelectionScreen(buttonText)));
       },
+
       icon: Padding(
         padding: EdgeInsets.only(left: 14),
         child: Text(buttonText,
@@ -37,6 +38,8 @@ class ButtonWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
+        surfaceTintColor: Colors.black,
+
         backgroundColor:buttonColor,
         fixedSize: Size(width, height),
       ), label: Text(''),
