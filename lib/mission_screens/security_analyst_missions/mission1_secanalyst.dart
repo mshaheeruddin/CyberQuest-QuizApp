@@ -23,10 +23,20 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
     await player.play(UrlSource('https://audio.jukehost.co.uk/79WHZvEEBVtB8EgiDeegrGm9fUavd8BU'));
   }
 
+  void playFailedMusic() async {
+    await player.play(UrlSource('https://audio.jukehost.co.uk/UTqzgWnA5875SGvWSxzlTFHkM05jnIub'));
+  }
+
   @override
   void initState() {
     super.initState();
     playBackgroundMusic();
+  }
+
+  void dispose() {
+    player.dispose();
+
+    super.dispose();
   }
 
   final int _duration = 20;
@@ -224,11 +234,12 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
     String message;
 
     if (_score >= 15) {
-      message = "Great job, Security Analyst! You did an excellent job!";
+      message = "Great job, Ethical Hacker! You did an excellent job!";
     } else if (_score >= 10) {
-      message = "Well done, Security Analyst! You did a good job!";
+      message = "Well done, Ethical Hacker! You did a good job!";
     } else {
-      message = "Good effort, Security Analyst! Keep practicing!";
+      message = "Good effort, Ethical Hacker! Keep practicing!";
+      playFailedMusic();
     }
 
     showDialog(
@@ -269,16 +280,19 @@ class _SecAnalystMission1State extends State<SecAnalystMission1> {
               Padding(
                 padding: EdgeInsets.only(top: 30),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: FaIcon(FontAwesomeIcons.arrowLeft),
                 ),
+
               ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 14),
             child: Text(
-              "Welcome To Mission 1, Security Analyst!",
+              "Welcome To Mission 1: The Breach!",
               style: GoogleFonts.adventPro(fontSize: 30),
             ),
           ),

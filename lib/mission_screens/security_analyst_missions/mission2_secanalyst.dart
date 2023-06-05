@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:cyberquest_isgame/secfinalvid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 import '../../game_main.dart';
 
@@ -16,6 +18,32 @@ class SecAnalystMission2 extends StatefulWidget {
 }
 
 class _SecAnalystMission2State extends State<SecAnalystMission2> {
+
+  final player = AudioPlayer();
+
+  void playBackgroundMusic() async {
+    await player.play(UrlSource('https://audio.jukehost.co.uk/79WHZvEEBVtB8EgiDeegrGm9fUavd8BU'));
+  }
+
+  void playFailedMusic() async {
+    await player.play(UrlSource('https://audio.jukehost.co.uk/UTqzgWnA5875SGvWSxzlTFHkM05jnIub'));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    playBackgroundMusic();
+  }
+
+  void dispose() {
+    player.dispose();
+
+    super.dispose();
+  }
+
+
+
+
   final int _duration = 20;
   final CountDownController _controller = CountDownController();
 
@@ -150,37 +178,88 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
     String message;
 
     if (_score >= 15) {
-      message = "Great job, Security Analyst! You did an excellent job!";
-    } else if (_score >= 10) {
-      message = "Well done, Security Analyst! You did a good job!";
-    } else {
-      message = "Good effort, Security Analyst! Keep practicing!";
-    }
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Quiz Completed'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(message),
-            SizedBox(height: 20),
-            Text('Final Score: $_score'),
+      message = "Great job, Ethical Hacker! You did an excellent job!";
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('All Mission Completed'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(message),
+              SizedBox(height: 20),
+              Text('Final Score: $_score'),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => Secfinalvid()));
+              },
+              child: Text('OK'),
+            ),
           ],
         ),
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => MainScreen()));
-            },
-            child: Text('OK'),
+      );
+    } else if (_score >= 10) {
+      message = "Well done, Ethical Hacker! You did a good job!";
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('All Mission Completed'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(message),
+              SizedBox(height: 20),
+              Text('Final Score: $_score'),
+            ],
           ),
-        ],
-      ),
-    );
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => Secfinalvid()));
+              },
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    } else {
+      message = "Try Again, Ethical Hacker! Keep practicing!";
+      playFailedMusic();
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Quiz Not Completed'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(message),
+              SizedBox(height: 20),
+              Text('Final Score: $_score'),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => MainScreen()));
+              },
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+
+
   }
 
   @override
@@ -195,16 +274,19 @@ class _SecAnalystMission2State extends State<SecAnalystMission2> {
               Padding(
                 padding: EdgeInsets.only(top: 30),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: FaIcon(FontAwesomeIcons.arrowLeft),
                 ),
+
               ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 14),
             child: Text(
-              "Welcome To Mission 2, Security Analyst!",
+              "Welcome To Mission 2: The Intrusion!",
               style: GoogleFonts.adventPro(fontSize: 30),
             ),
           ),

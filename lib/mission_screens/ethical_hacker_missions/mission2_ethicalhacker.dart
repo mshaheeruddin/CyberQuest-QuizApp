@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cyberquest_isgame/ethfinalvid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,10 +24,20 @@ class _EthicalHackerMission2State extends State<EthicalHackerMission2> {
     await player.play(UrlSource('https://audio.jukehost.co.uk/79WHZvEEBVtB8EgiDeegrGm9fUavd8BU'));
   }
 
+  void playFailedMusic() async {
+    await player.play(UrlSource('https://audio.jukehost.co.uk/UTqzgWnA5875SGvWSxzlTFHkM05jnIub'));
+  }
+
   @override
   void initState() {
     super.initState();
     playBackgroundMusic();
+  }
+
+  void dispose() {
+    player.dispose();
+
+    super.dispose();
   }
 
   final int _duration = 20;
@@ -280,36 +291,86 @@ class _EthicalHackerMission2State extends State<EthicalHackerMission2> {
 
     if (_score >= 15) {
       message = "Great job, Ethical Hacker! You did an excellent job!";
-    } else if (_score >= 10) {
-      message = "Well done, Ethical Hacker! You did a good job!";
-    } else {
-      message = "Good effort, Ethical Hacker! Keep practicing!";
-    }
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Quiz Completed'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(message),
-            SizedBox(height: 20),
-            Text('Final Score: $_score'),
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Quiz Completed'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(message),
+              SizedBox(height: 20),
+              Text('Final Score: $_score'),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => Ethfinalvid()));
+              },
+              child: Text('OK'),
+            ),
           ],
         ),
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => MainScreen()));
-            },
-            child: Text('OK'),
+      );
+    } else if (_score >= 10) {
+      message = "Well done, Ethical Hacker! You did a good job!";
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Quiz Completed'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(message),
+              SizedBox(height: 20),
+              Text('Final Score: $_score'),
+            ],
           ),
-        ],
-      ),
-    );
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => Ethfinalvid()));
+              },
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    } else {
+      message = "Not Enough, Ethical Hacker! Keep practicing!";
+      playFailedMusic();
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Quiz not Completed'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(message),
+              SizedBox(height: 20),
+              Text('Final Score: $_score'),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => MainScreen()));
+              },
+              child: Text('Try Again'),
+            ),
+          ],
+        ),
+      );
+    }
+
+
   }
 
   @override
@@ -324,16 +385,19 @@ class _EthicalHackerMission2State extends State<EthicalHackerMission2> {
               Padding(
                 padding: EdgeInsets.only(top: 30),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: FaIcon(FontAwesomeIcons.arrowLeft),
                 ),
+
               ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 14),
             child: Text(
-              "Welcome To Mission 2, Ethical Hacker!",
+              "Welcome To Mission 2: The Vulnerability Assessment!",
               style: GoogleFonts.adventPro(fontSize: 30),
             ),
           ),

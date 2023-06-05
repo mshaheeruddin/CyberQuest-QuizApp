@@ -16,18 +16,27 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              SafeArea(
-                child: Padding(
+        body: Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+          //assets/background_image.png
+        image: AssetImage('assets/background_image.png'),
+    fit: BoxFit.cover,
+    ),
+    ),
+    child: Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+    Stack(
+    children: [
+    SafeArea(
+    child: Padding(
                   padding: const EdgeInsets.only(top: 20.0, left: 14),
                   child: Text(
                     "Welcome To CyberQuest Game",
-                    style: GoogleFonts.adventPro(fontSize: 50),
+                    style: GoogleFonts.adventPro(fontSize: 50, color: Colors.white),
+
                   ),
                 ),
               ),
@@ -39,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
             padding: const EdgeInsets.only(top: 20.0, left: 20),
             child: Text(
               "Select your role",
-              style: GoogleFonts.adventPro(fontSize: 26, fontWeight: FontWeight.bold),
+              style: GoogleFonts.adventPro(fontSize: 26, fontWeight: FontWeight.bold,color: Colors.white),
             ),
           ),
           SizedBox(height: 30,),
@@ -51,13 +60,12 @@ class _MainScreenState extends State<MainScreen> {
             padding: const EdgeInsets.all(8.0),
             child: ButtonWidget('Ethical Hacker', Colors.grey,Colors.black, 500,100),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ButtonWidget('Pen Tester', Colors.white30,Colors.black, 500,100),
-          )
 
         ],
       ),
+
+
+    )
     );
   }
 }

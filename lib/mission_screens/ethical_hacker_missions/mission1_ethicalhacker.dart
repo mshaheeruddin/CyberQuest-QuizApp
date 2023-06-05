@@ -31,8 +31,20 @@ class _EthicalHackerMission1State extends State<EthicalHackerMission1> {
     playBackgroundMusic();
   }
 
+  void dispose() {
+    player.dispose();
+
+    super.dispose();
+  }
+
   final int _duration = 20;
   final CountDownController _controller = CountDownController();
+  bool mission1Completed = false;
+  bool mission2Completed = false;
+  bool mission3Completed = false;
+  int mission1Score = 0;
+  int mission2Score = 0;
+  int mission3Score = 0;
 
   bool _isCountdownStarted = false;
   bool _isQuizFinished = false;
@@ -43,94 +55,64 @@ class _EthicalHackerMission1State extends State<EthicalHackerMission1> {
 
   List<Map<String, dynamic>> _questions = [
     {
-      'question': 'What is footprinting in ethical hacking?',
+      'question': 'What is the first step you should take to mitigate the breach?',
       'options': [
-        'Gaining information about a target system or network',
-        'Attempting to gain unauthorized access to a system',
-        'Intercepting and modifying network traffic'
+        'Disconnect the affected servers from the network',
+        'Notify the management and other stakeholders',
+        'Analyze the hackers actions to gather evidence',
+        'Conduct a vulnerability assessment of the companys systems'
       ],
-      'answer': 'Gaining information about a target system or network'
+      'answer': 'Disconnect the affected servers from the network'
     },
     {
-      'question': 'What is the purpose of a vulnerability assessment?',
+      'question': 'After disconnecting the affected servers, what should you do next to further contain the breach?',
       'options': [
-        'Identifying and evaluating security vulnerabilities in a system',
-        'Exploiting vulnerabilities to gain unauthorized access',
-        'Disrupting network traffic'
+        'Change all user passwords immediately',
+        'Conduct a thorough forensic investigation',
+        'Restore affected servers from clean backups',
+        'Patch the identified vulnerabilities in the systems'
       ],
-      'answer': 'Identifying and evaluating security vulnerabilities in a system'
+      'answer': 'Restore affected servers from clean backups'
     },
     {
-      'question': 'What is the main goal of penetration testing?',
+      'question': 'What is an essential step to prevent future breaches?',
       'options': [
-        'Assessing the security of a system by simulating real-world attacks',
-        'Creating new vulnerabilities in a system',
-        'Interfering with network communication'
+        'Implement multi-factor authentication',
+        'Update antivirus software on all systems',
+        'Conduct regular security awareness training',
+        'Monitor network traffic in real-time'
       ],
-      'answer': 'Assessing the security of a system by simulating real-world attacks'
+      'answer': 'Implement multi-factor authentication'
     },
     {
-      'question': 'What is the concept of social engineering in ethical hacking?',
-      'options': [
-        'Manipulating human psychology to trick individuals into revealing confidential information',
-        'Exploiting vulnerabilities in network protocols',
-        'Overloading a system with excessive traffic'
-      ],
-      'answer': 'Manipulating human psychology to trick individuals into revealing confidential information'
+      'question': 'What can be done to strengthen the companys incident response capabilities?',
+    'options': [
+      'Create a detailed incident response plan',
+      'Purchase additional security hardware',
+      'Hire more security analysts',
+      'Conduct regular penetration testing'
+    ],
+      'answer': 'Create a detailed incident response plan'
     },
     {
-      'question': 'What is the purpose of a firewall in network security?',
-      'options': [
-        'Monitoring and controlling incoming and outgoing network traffic',
-        'Encrypting sensitive data to protect it from unauthorized access',
-        'Creating backups of important system files'
-      ],
-      'answer': 'Monitoring and controlling incoming and outgoing network traffic'
+      'question': 'What measures can be taken to secure remote access to the companys systems?',
+    'options': [
+      'Use a virtual private network (VPN) for remote connections',
+      'Restrict access to specific IP addresses',
+      'Implement strong encryption for remote sessions',
+      'Enforce regular password changes for remote users'
+    ],
+      'answer': 'Use a virtual private network (VPN) for remote connections'
     },
     {
-      'question': 'What is the difference between white hat hackers and black hat hackers?',
-      'options': [
-        'White hat hackers are ethical hackers who use their skills for good, while black hat hackers engage in malicious activities',
-        'White hat hackers focus on physical security, while black hat hackers focus on digital security',
-        'White hat hackers work for the government, while black hat hackers work independently'
-      ],
-      'answer': 'White hat hackers are ethical hackers who use their skills for good, while black hat hackers engage in malicious activities'
-    },
-    {
-      'question': 'What is the concept of privilege escalation?',
-      'options': [
-        'Gaining higher levels of access and privileges than initially authorized',
-        'Exploiting vulnerabilities in a database query language',
-        'Tricking users into revealing confidential information'
-      ],
-      'answer': 'Gaining higher levels of access and privileges than initially authorized'
-    },
-    {
-      'question': 'What is the purpose of cryptography in ethical hacking?',
-      'options': [
-        'Protecting sensitive information by converting it into unreadable form',
-        'Disrupting network traffic to make it unavailable',
-        'Exploiting vulnerabilities in web applications'
-      ],
-      'answer': 'Protecting sensitive information by converting it into unreadable form'
-    },
-    {
-      'question': 'What is the concept of SQL injection in ethical hacking?',
-      'options': [
-        'Exploiting vulnerabilities in a database query language to manipulate database operations',
-        'Tricking users into revealing confidential information',
-        'Intercepting and modifying network traffic'
-      ],
-      'answer': 'Exploiting vulnerabilities in a database query language to manipulate database operations'
-    },
-    {
-      'question': 'What is the purpose of ethical hacking?',
-      'options': [
-        'Identifying and fixing vulnerabilities in systems to improve overall security',
-        'Disrupting the operations of target systems or networks',
-        'Gaining unauthorized access to sensitive information'
-      ],
-      'answer': 'Identifying and fixing vulnerabilities in systems to improve overall security'
+      'question': 'How can you ensure the physical security of the companys data centers?',
+    'options': [
+      'Implement access control systems and surveillance cameras',
+      'Conduct regular vulnerability scans on physical infrastructure',
+      'Restrict access to authorized personnel only',
+      'Install fire suppression systems in data center facilities'
+    ],
+      'answer': 'Implement access control systems and surveillance cameras'
     }
   ];
 
@@ -219,16 +201,19 @@ class _EthicalHackerMission1State extends State<EthicalHackerMission1> {
               Padding(
                 padding: EdgeInsets.only(top: 30),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: FaIcon(FontAwesomeIcons.arrowLeft),
                 ),
+
               ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 14),
             child: Text(
-              "Welcome To Mission 1, Ethical Hacker!",
+              "Welcome To Mission 1: The Reconnaissance!",
               style: GoogleFonts.adventPro(fontSize: 30),
             ),
           ),
